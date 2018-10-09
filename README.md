@@ -3,8 +3,8 @@
 
 **ΑΜ**: Π2016123 
 
-  [Repository](https://github.com/GiannhsKer/pacman) 
+  [Repository](https://github.com/giannhsKer/shooter) 
 
   [Execute](https://giannhsker.github.io/shooter/menu.html) 
   
-  [Αναφορά σε gh-pages](https://giannhsker.github.io/hci/projects/2016123/)
+  [Αναφορά σε gh-pages](...)
