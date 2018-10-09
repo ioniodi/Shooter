@@ -1,4 +1,4 @@
-#Shooter
+# Shooter
 
 **Ονοματεπώνυμο**: Γιάννης-Παναγιώτης Κερασιώτης 
 
@@ -6,6 +6,6 @@
 
   [Repository](https://github.com/giannhsKer/shooter) 
 
-  [Execute](https://giannhsker.github.io/shooter/menu.html) 
+  [Shooter game](https://giannhsker.github.io/shooter/menu.html) 
   
   [Αναφορά σε gh-pages](...)
