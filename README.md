@@ -6,6 +6,6 @@
 
   [Repository](https://github.com/giannhsKer/shooter) 
 
-  [Shooter game](https://giannhsker.github.io/shooter/menu.html) 
+  [Shooter game](https://giannhsker.github.io/shooter/index.html) 
   
   [Αναφορά σε gh-pages](...)
