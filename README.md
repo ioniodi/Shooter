@@ -1,4 +1,4 @@
-## Shooter
+# Shooter
 
 **Ονοματεπώνυμο**: Γιάννης-Παναγιώτης Κερασιώτης 
 
@@ -9,3 +9,12 @@
   [Shooter game](https://giannhsker.github.io/Shooter/index.html) 
   
   [Αναφορά σε gh-pages](...)
+  
+  
+#### ✔ Initial settings (όπως περιγράφονται στο README.md του repository)
+
+#### ✔ Link του παιχνιδιού στην αναφορά
+
+#### ✔ Πρόσθεσε ήχους (shooting, explosions, κτλ.) και μουσική.
+		
+		http://soundbible.com/1949-Pew-Pew.html
