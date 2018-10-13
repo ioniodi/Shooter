@@ -23,6 +23,7 @@ body {
 		});
 
 		var player;
+		var greenEnemies;
 		var starfield;
 		var cursors;
 		var bank;
@@ -45,10 +46,26 @@ body {
 			game.load.image('starfield', 'assets/starfield.png');
 			game.load.image('ship', 'assets/ship.png');
 			game.load.image('bullet', 'assets/bullets/bullet.png');
+			game.load.image('enemy-green', '/assets/enemy-green.png');
 
 		}
 
 		function create() {
+			
+			    //  The baddies!
+			 greenEnemies = game.add.group();
+   			 greenEnemies.enableBody = true;
+    			 greenEnemies.physicsBodyType = Phaser.Physics.ARCADE;
+   			 greenEnemies.createMultiple(5, 'enemy-green');
+   			 greenEnemies.setAll('anchor.x', 0.5);
+   			 greenEnemies.setAll('anchor.y', 0.5);
+   			 greenEnemies.setAll('scale.x', 0.5);
+    			 greenEnemies.setAll('scale.y', 0.5);
+    			 greenEnemies.setAll('angle', 180);
+    			 greenEnemies.setAll('outOfBoundsKill', true);
+   			 greenEnemies.setAll('checkWorldBounds', true);
+
+  			  launchGreenEnemy();
 			
 			game.scale.pageAlignHorizontally = true;
 			
@@ -89,6 +106,23 @@ body {
 			shipTrail.start(false, 5000, 10);
 
 		}
+		
+	   function launchGreenEnemy() {
+    		var MIN_ENEMY_SPACING = 300;
+    		var MAX_ENEMY_SPACING = 3000;
+    		var ENEMY_SPEED = 300;
+
+   	 var enemy = greenEnemies.getFirstExists(false);
+   	 if (enemy) {
+        	enemy.reset(game.rnd.integerInRange(0, game.width), -20);
+       		enemy.body.velocity.x = game.rnd.integerInRange(-300, 300);
+        	enemy.body.velocity.y = ENEMY_SPEED;
+       		enemy.body.drag.x = 100;
+   	 }
+
+    //  Send another enemy soon
+    game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
+	}
 
 		function update() {
 
