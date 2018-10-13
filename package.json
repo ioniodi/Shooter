@@ -1,0 +1,27 @@
+{
+  "name": "shooter",
+  "version": "1.0.0",
+  "description": "Σκοπός της εργασίας είναι να επεκτείνεις το Shooter --ένα HTML5 video game--. Για τον σκοπό αυτό θα χρησιμοποιήσουμε τη βιβλιοθήκη [Phaser](http://phaser.io/). Για την εργασία θα στηριχθείς σε ένα υπάρχον παιχνίδι το Shooter και στη συνέχεια θα πρέπει να το επεκτείνεις. Για την ανάπτυξη του παιχνίδιου μπορείς να χρησιμοποιήσεις μόνο το github ή/και έναν απλό επεξεργαστή κειμένου. Αρχικά θα πρέπει να δημιουργήσεις ένα αντίγραφο (fork) του [αποθετηρίου](https://github.com/ioniodi/Shooter) του παιχνιδίου και στη συνέχεια να υλοποιήσεις τα ζητούμενα όπως περιγράφονται στα ανοιχτά [issues](https://github.com/ioniodi/Shooter/issues) της εργασίας.",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeoChrysostomidis/Shooter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeoChrysostomidis/Shooter/issues"
+  },
+  "homepage": "https://github.com/TeoChrysostomidis/Shooter#readme",
+  "dependencies": {
+    "connect": "^3.6.6",
+    "serve-static": "^1.13.2"
+  }
+}
