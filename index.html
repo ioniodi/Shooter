@@ -270,7 +270,7 @@ body {
 			   game.physics.arcade.overlap(greenEnemies, bullets, hitEnemy, null, this);
 
 			    game.physics.arcade.overlap(player, blueEnemies, shipCollide, null, this);
-				game.physics.arcade.overlap(bullets, blueEnemies, hitEnemy, null, this);
+				game.physics.arcade.overlap( blueEnemies,bullets , hitEnemy, null, this);
 				
 				game.physics.arcade.overlap(blueEnemyBullets, player, enemyHitsPlayer, null, this);
 
