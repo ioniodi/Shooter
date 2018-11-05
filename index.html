@@ -28,6 +28,7 @@ body {
 		var bank;
 		var shipTrail;
 		var bullets;
+		var Destroy;
 		var fireButton;
 		var bulletTimer = 0;
 
@@ -45,6 +46,7 @@ body {
 			game.load.image('starfield', 'assets/starfield.png');
 			game.load.image('ship', 'assets/ship.png');
 			game.load.image('bullet', 'assets/bullets/bullet.png');
+			game.load.audio('Destroy', 'Destroy.mp3');
 
 		}
 
@@ -129,6 +131,8 @@ body {
 
 			//  Fire bullet
 			if (player.alive && fireButton.isDown) {
+				Destroy = game.add.audio('Destroy');
+			Destroy.play();
 				fireBullet();
 			}
 
