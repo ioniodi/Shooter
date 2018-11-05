@@ -31,7 +31,6 @@ body {
 		var shipTrail;
 		var bullets;
 		
-		var enemies3;	
 		var fireButton;
 		var bulletTimer = 0;
 		var enemies3;
@@ -164,40 +163,12 @@ body {
 
 		}
 
-		// Check for collisions - New
-			
-			game.physics.arcade.overlap(player, enemies3, shipCollide, null, this);
-			game.physics.arcade.overlap(enemies3, bullets, hitEnemy, null, this);
-			game.physics.arcade.overlap(enemy3Bullets, player, enemyHitsPlayer, null, this);
-		
 		
 		
 		function render() {
 
 		}
 
-		
-		function launchEnemy3() {
-			var startingY = game.rnd.integerInRange(100, game.height - 100);
-			var horizontalSpeed = -180;
-			var spread = 60;
-			var frequency = 70;
-			var horizontalSpacing = 70;
-			var numEnemiesInWave = 5;
-			var timeBetweenWaves = 2500;
-			console.log('Launching 3');
-			// Launch wave
-			for (var i=0; i<numEnemiesInWave; i++) {
-				var enemy = enemies3.getFirstExists(false);
-				if (enemy) {
-					enemy.startingY = startingY;
-					enemy.reset(game.width + horizontalSpacing * i, game.height / 2);
-					enemy.body.velocity.x = horizontalSpeed;
-					// Set up firing
-					var bulletSpeed = 400;
-					var firingDelay = 2000;
-					enemy.bullets = 1;
-					enemy.lastShot = 0;
 		
 		function fireBullet() {
 			//  To avoid them being allowed to fire too fast we set a time limit
