@@ -35,7 +35,7 @@ body {
 		var DRAG = 400;
 		var MAXSPEED = 400;
 		
-		var firesounds;
+		var fire;
 
 		function preload() {
 
@@ -48,7 +48,7 @@ body {
 			game.load.image('ship', 'assets/ship.png');
 			game.load.image('bullet', 'assets/bullets/bullet.png');
 			
-			game.load.audio('firesounds','sounds/fire.mp3');
+			game.load.audio('fire','sounds/fire.mp3');
 
 		}
 
@@ -133,8 +133,8 @@ body {
 
 			//  Fire bullet
 			if (player.alive && fireButton.isDown) {
-				firesounds = game.add.audio('fire');
-		        		firesounds.play();
+				fire = game.add.audio('fire');
+		        		fire.play();
 				fireBullet();
 			}
 
