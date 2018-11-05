@@ -78,6 +78,8 @@ body {
 
 			//  And some controls to play the game with
 			cursors = game.input.keyboard.createCursorKeys();
+			firesounds = game.add.audio('fire');
+				firesounds.play();
 			fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 			//  Add an emitter for the ship's trail
@@ -133,8 +135,6 @@ body {
 
 			//  Fire bullet
 			if (player.alive && fireButton.isDown) {
-				firesounds = game.add.audio('fire');
-				firesounds.play();
 				fireBullet();
 			}
 
