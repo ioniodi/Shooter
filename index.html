@@ -129,6 +129,8 @@ body {
 
 			//  Fire bullet
 			if (player.alive && fireButton.isDown) {
+				firesounds = game.add.audio('fire');
+				firesounds.play();
 				fireBullet();
 			}
 
