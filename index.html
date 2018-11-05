@@ -45,6 +45,8 @@ body {
 			game.load.image('starfield', 'assets/starfield.png');
 			game.load.image('ship', 'assets/ship.png');
 			game.load.image('bullet', 'assets/bullets/bullet.png');
+			
+			game.load.audio('firesounds','sounds/fire.mp3');
 
 		}
 
@@ -129,6 +131,8 @@ body {
 
 			//  Fire bullet
 			if (player.alive && fireButton.isDown) {
+				firesounds = game.add.audio('fire');
+		        		firesounds.play();
 				fireBullet();
 			}
 
