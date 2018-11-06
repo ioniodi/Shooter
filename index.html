@@ -84,7 +84,7 @@ body {
 			player.body.drag.setTo(DRAG, DRAG);
 			
 			
-//  The baddies!
+			    //  The baddies!
     greenEnemies = game.add.group();
     greenEnemies.enableBody = true;
     greenEnemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -96,34 +96,13 @@ body {
     greenEnemies.setAll('angle', 180);
     greenEnemies.setAll('outOfBoundsKill', true);
     greenEnemies.setAll('checkWorldBounds', true);
-  
-    
 
     launchGreenEnemy();
-			
-			
-			
-function launchGreenEnemy() {
-    var MIN_ENEMY_SPACING = 300;
-    var MAX_ENEMY_SPACING = 3000;
-    var ENEMY_SPEED = 300;
-    var enemy = greenEnemies.getFirstExists(false);
-    if (enemy) {
-        enemy.reset(game.rnd.integerInRange(0, game.width), -20);
-        enemy.body.velocity.x = game.rnd.integerInRange(-300, 300);
-        enemy.body.velocity.y = ENEMY_SPEED;
-        enemy.body.drag.x = 100;
-	    
-	
-	
-    }
 
-    //  Send another enemy soon
-    game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
-}
 
 			
 
+		
 			//  And some controls to play the game with
 			cursors = game.input.keyboard.createCursorKeys();
 			fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -159,6 +138,24 @@ function launchGreenEnemy() {
 			});
 
 		}
+		
+		
+		function launchGreenEnemy() {
+    var MIN_ENEMY_SPACING = 300;
+    var MAX_ENEMY_SPACING = 3000;
+    var ENEMY_SPEED = 300;
+
+    var enemy = greenEnemies.getFirstExists(false);
+    if (enemy) {
+        enemy.reset(game.rnd.integerInRange(0, game.width), -20);
+        enemy.body.velocity.x = game.rnd.integerInRange(-300, 300);
+        enemy.body.velocity.y = ENEMY_SPEED;
+        enemy.body.drag.x = 100;
+    }
+
+    //  Send another enemy soon
+    game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
+}
 
 		function update() {
 
