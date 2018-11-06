@@ -34,6 +34,7 @@ body {
 		var Destroy;
 		var fireButton;
 		var bulletTimer = 0;
+		var shields;
 		
 		
 		var greenEnemies;
@@ -91,10 +92,14 @@ body {
 
 			//  The hero!
 			player = game.add.sprite(100, game.height / 2, 'ship');
+			player.health = 100;
 			player.anchor.setTo(0.5, 0.5);
 			game.physics.enable(player, Phaser.Physics.ARCADE);
 			player.body.maxVelocity.setTo(MAXSPEED, MAXSPEED);
 			player.body.drag.setTo(DRAG, DRAG);
+			player.events.onKilled.add(function(){
+				shipTrail.kill();
+			});
 			
 			
 			 //  The baddies!
@@ -114,6 +119,7 @@ body {
 			greenEnemies.forEach(function(enemy){
 				addEnemyEmitterTrail(enemy);
 				enemy.body.setSize(enemy.width * 3 / 4, enemy.height * 3 / 4);
+				enemy.damageAmount = 20;
 				enemy.events.onKilled.add(function(){
 					enemy.trail.kill();
 				});
@@ -152,7 +158,12 @@ body {
 			explosions.forEach( function(explosion) {
 				explosion.animations.add('explosion');
 			});
-
+			
+			//  Shields stat
+			shields = game.add.text(game.world.width - 150, 10, 'Shields: ' + player.health +'%', { font: '20px Arial', fill: '#fff' });
+			shields.render = function () {
+				shields.text = 'Shields: ' + Math.max(player.health, 0) +'%';
+				};
 		}
 
 		
@@ -194,7 +205,8 @@ body {
 			}
 
 			//  Fire bullet
-			if (player.alive && fireButton.isDown) {
+			//if (player.alive && fireButton.isDown) {
+			if (player.alive && (fireButton.isDown || game.input.activePointer.isDown)) {	
 				Destroy = game.add.audio('Destroy');
 			Destroy.play();
 				fireBullet();
@@ -322,6 +334,8 @@ body {
 		bullet.kill()
 		}
 		
+		player.damage(enemy.damageAmount);
+		shields.render();
 		
 	</script>
 </body>
