@@ -95,7 +95,7 @@ body {
 
 			greenEnemies.enableBody = true;
 			greenEnemies.physicsBodyType = Phaser.Physics.ARCADE;
-			greenEnemies.createMultiple(5, 'green-enemy');
+			greenEnemies.createMultiple(5, 'enemy-green');
 			greenEnemies.setAll('anchor.x', 0.5)
 			greenEnemies.setAll('anchor.y', 0.5);
 			greenEnemies.setAll('scale.x', 0.5);
@@ -108,6 +108,7 @@ body {
 			
 			
 
+			
 			//  And some controls to play the game with
 			cursors = game.input.keyboard.createCursorKeys();
 			fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
