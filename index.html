@@ -101,7 +101,7 @@ body {
 			greenEnemies = game.add.group();
 			greenEnemies.enableBody = true;
 			greenEnemies.physicsBodyType = Phaser.Physics.ARCADE;
-			greenEnemies.createMultiple(5, 'enemy-green');
+			greenEnemies.createMultiple(5, 'green-enemy');
 			greenEnemies.setAll('anchor.x', 0.5);
 			greenEnemies.setAll('anchor.y', 0.5);
 			greenEnemies.setAll('scale.x', 0.5);
@@ -216,6 +216,8 @@ body {
 			var MAX_ENEMY_SPACING = 3000
 			var ENEMY_SPEED = 300;
 			var enemy = greenEnemies.getFirstExists(false);
+			
+			
 			if (enemy) {
 
 				enemy.reset(game.rnd.integerInRange(0, game.width), -20);
@@ -229,6 +231,7 @@ body {
 		
 			
 		}
+		
 		
 		
 		
