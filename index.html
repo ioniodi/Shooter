@@ -90,17 +90,16 @@ body {
 			player.body.drag.setTo(DRAG, DRAG);
 			
 			
-			//  The baddies!
+			//  Enemies
 			greenEnemies = game.add.group();
-
 			greenEnemies.enableBody = true;
 			greenEnemies.physicsBodyType = Phaser.Physics.ARCADE;
 			greenEnemies.createMultiple(5, 'enemy-green');
 			greenEnemies.setAll('anchor.x', 0.5)
 			greenEnemies.setAll('anchor.y', 0.5);
-			greenEnemies.setAll('scale.x', 0.5);
-			greenEnemies.setAll('scale.y', 0.5);
-			greenEnemies.setAll('angle', 270);
+			//greenEnemies.setAll('scale.x', 0.5);
+			//greenEnemies.setAll('scale.y', 0.5);
+			//greenEnemies.setAll('angle', 270);
 			greenEnemies.setAll('outOfBoundsKill', true);
 			greenEnemies.setAll('checkWorldBounds', true);
 			
@@ -208,8 +207,8 @@ body {
 		}
 		
 		function launchGreenEnemy() {
-			var MIN_ENEMY_SPACING = 300;
-			var MAX_ENEMY_SPACING = 3000;
+			//var MIN_ENEMY_SPACING = 300;
+			//var MAX_ENEMY_SPACING = 3000;
 			var ENEMY_SPEED = 300;
 			var enemy = greenEnemies.getFirstExists(false);
 
@@ -228,7 +227,6 @@ body {
 			//  Send another enemy soon
 			game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 		}
-		
 		
 		
 		
