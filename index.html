@@ -40,9 +40,7 @@ body {
 		var greenEnemyLaunchTimer;
 		var gameOver;
 		
-		
-		
-
+		                      
 		var ACCLERATION = 600;
 		var DRAG = 400;
 		var MAXSPEED = 400; 
@@ -191,7 +189,7 @@ body {
 		gameOver.y = gameOver.y - gameOver.textHeight / 3;
 		gameOver.visible = false;
 		
-		
+		}
 		
 		function update() {
 
@@ -255,6 +253,7 @@ body {
 				var fadeInGameOver = game.add.tween(gameOver);
 				fadeInGameOver.to({alpha: 1}, 1000, Phaser.Easing.Quintic.Out);
 				fadeInGameOver.onComplete.add(setResetHandlers);
+				
 				fadeInGameOver.start();
 				function setResetHandlers() {
 					//  The "click to restart" handler
@@ -268,6 +267,51 @@ body {
 				}
 			}	
 
+		}
+		
+				function shipCollide(player, enemy) {
+			var explosion = explosions.getFirstExists(false);
+			explosion.reset(enemy.body.x + enemy.body.halfWidth, enemy.body.y + enemy.body.halfHeight);
+			explosion.body.velocity.y = enemy.body.velocity.y;
+			explosion.alpha = 0.7;
+			explosion.play('explosion', 30, false, true);
+			enemy.kill();
+			
+			
+			player.damage(enemy.damageAmount);
+		shields.render();
+		}
+		
+				function hitEnemy(enemy, bullet) {
+		var explosion = explosions.getFirstExists(false);
+		explosion.reset(bullet.body.x + bullet.body.halfWidth, bullet.body.y + bullet.body.halfHeight);
+		explosion.body.velocity.y = enemy.body.velocity.y;
+		explosion.alpha = 0.7;
+		explosion.play('explosion', 30, false, true);
+		enemy.kill();
+		bullet.kill();
+			
+		  // Increase score
+			score += enemy.damageAmount * 10;
+			scoreText.render();
+		}
+		
+		function restart () {
+		//  Reset the enemies
+			greenEnemies.callAll('kill');
+			game.time.events.remove(greenEnemyLaunchTimer);
+			game.time.events.add(1000, launchGreenEnemy); 
+			
+			//  Revive the player
+			player.revive();
+			player.health = 100;
+			shields.render();
+			score = 0;
+			scoreText.render();
+			
+			//  Hide the text
+			gameOver.visible = false;
+			
 		}
 		
 
@@ -362,48 +406,6 @@ body {
 			enemy.trail = enemyTrail;
 		}
 	
-		
-		function shipCollide(player, enemy) {
-			var explosion = explosions.getFirstExists(false);
-			explosion.reset(enemy.body.x + enemy.body.halfWidth, enemy.body.y + enemy.body.halfHeight);
-			explosion.body.velocity.y = enemy.body.velocity.y;
-			explosion.alpha = 0.7;
-			explosion.play('explosion', 30, false, true);
-			enemy.kill();
-		}
-		
-		
-		function hitEnemy(enemy, bullet) {
-		var explosion = explosions.getFirstExists(false);
-		explosion.reset(bullet.body.x + bullet.body.halfWidth, bullet.body.y + bullet.body.halfHeight);
-		explosion.body.velocity.y = enemy.body.velocity.y;
-		explosion.alpha = 0.7;
-		explosion.play('explosion', 30, false, true);
-		enemy.kill();
-		bullet.kill();
-			
-		  // Increase score
-			score += enemy.damageAmount * 10;
-			scoreText.render();
-		}
-		
-		function restart () {
-		//  Reset the enemies
-			greenEnemies.callAll('kill');
-			game.time.events.remove(greenEnemyLaunchTimer);
-			game.time.events.add(1000, launchGreenEnemy); //  Revive the player
-			player.revive();
-			player.health = 100;
-			shields.render();
-			score = 0;
-			scoreText.render();
-			//  Hide the text
-			gameOver.visible = false;
-		}
-		
-		
-		player.damage(enemy.damageAmount);
-		shields.render();
 		
 		
 	</script>
