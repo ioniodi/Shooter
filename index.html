@@ -222,12 +222,17 @@ body {
 				enemy.trail.start(false, 800, 1);
 				enemy.trail.x = enemy.x;
 				enemy.trail.y = enemy.y -10;
+				
+				
+				enemy.update = function(){
+					enemy.trail.x = enemy.x;
+					enemy.trail.y = enemy.y ;
 			}
 
 			//  Send another enemy soon
 			game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 		}
-		
+		.
 		
 		
 		
