@@ -208,13 +208,13 @@ body {
 		}
 		
 		function launchGreenEnemy() {
-			//var MIN_ENEMY_SPACING = 300;
-			//var MAX_ENEMY_SPACING = 3000;
+			var MIN_ENEMY_SPACING = 300;
+			var MAX_ENEMY_SPACING = 3000;
 			var ENEMY_SPEED = 300;
 			var enemy = greenEnemies.getFirstExists(false);
 
 			if (enemy) {
-				enemy.reset(game.rnd.integerInRange(0, game.width), 300);
+				enemy.reset(800,game.rnd.integerInRange(game.width), 300);
 				
 				enemy.body.velocity.x = -ENEMY_SPEED;
 				enemy.body.velocity.y = game.rnd.integerInRange(0, -100);
@@ -223,16 +223,12 @@ body {
 				enemy.trail.x = enemy.x;
 				enemy.trail.y = enemy.y -10;
 				
-				
-				enemy.update = function(){
-					enemy.trail.x = enemy.x;
-					enemy.trail.y = enemy.y ;
 			}
 
 			//  Send another enemy soon
 			game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 		}
-		.
+		
 		
 		
 		
