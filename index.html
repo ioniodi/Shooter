@@ -176,12 +176,11 @@ body {
 		}
 		
 		 //  Score
-		//scoreText = game.add.text(10, 10, '', { font: '20px Arial', fill: '#fff' });
-		scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
-		scoreText.render = function () {
-			scoreText.text = 'Score: ' + score;
-		};
-		scoreText.render();
+    scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
+    scoreText.render = function () {
+        scoreText.text = 'Score: ' + score;
+    };
+    scoreText.render();
 		
 		
 		//  Game over text
