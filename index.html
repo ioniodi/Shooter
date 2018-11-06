@@ -351,10 +351,10 @@ function launchGreenEnemy() {
 
     var enemy = greenEnemies.getFirstExists(false);
     if (enemy) {
-        enemy.reset(game.rnd.integerInRange(0, game.width), -50);
+        enemy.reset(game.width+50, game.rnd.integerInRange(0, game.height-50));
+	enemy.body.velocity.x = -ENEMY_SPEED;
         enemy.body.velocity.y = game.rnd.integerInRange(-60, 60);
-        enemy.body.velocity.x = ENEMY_SPEED;
-        enemy.body.drag.x = 100;
+        enemy.body.drag.x = -10;
 
 	    
 	enemy.trail.start(false, 800, 1);
