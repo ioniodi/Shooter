@@ -95,7 +95,7 @@ body {
 
 			greenEnemies.enableBody = true;
 			greenEnemies.physicsBodyType = Phaser.Physics.ARCADE;
-			greenEnemies.createMultiple(5, 'enemy1');
+			greenEnemies.createMultiple(5, 'green-enemy');
 			greenEnemies.setAll('anchor.x', 0.5)
 			greenEnemies.setAll('anchor.y', 0.5);
 			greenEnemies.setAll('scale.x', 0.5);
@@ -126,6 +126,7 @@ body {
 
 		}
 
+		
 		function update() {
 
 			//  Scroll the background
