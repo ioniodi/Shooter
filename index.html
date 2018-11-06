@@ -231,15 +231,11 @@ body {
 				enemy.angle = 180 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
 				}
 			}
-			
+			 
+			//  Send another enemy soon
+			game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 		}	
 			
-
-    //  Send another enemy soon
-			game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
-		
-			
-		
 	
 		
 		
