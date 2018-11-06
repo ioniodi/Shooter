@@ -15,7 +15,7 @@ body {
 </head>
 <body>
 	<script type="text/javascript">
-		var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-demo', {
+		var game = new Phaser.Game(1499, 600, Phaser.AUTO, 'phaser-demo', {
 			preload : preload,
 			create : create,
 			update : update,
@@ -61,7 +61,7 @@ body {
 			game.scale.pageAlignHorizontally = true;
 			
 			//  The scrolling starfield background
-			starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
+			starfield = game.add.tileSprite(0, 0, 1499, 600, 'starfield');
 
 			//  Our bullet group
 			bullets = game.add.group();
