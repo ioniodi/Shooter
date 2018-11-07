@@ -40,7 +40,9 @@ body {
 		var score = 0;
 		var scoreText;
 		var greenEnemyLaunchTimer;
+		var greenEnemySpacing = 1000;
 		var blueEnemyLaunchTimer;
+		var blueEnemyLaunched = false;
 		var gameOver;
 		
 		                      
@@ -72,13 +74,11 @@ body {
 		}
 
 		function create() {
-			
-			
+					
 			//Music Add
 			music = game.add.audio('song');
 			music.loopFull();
 			music.play();
-			
 			music.volume = 0.5;
 			
 			game.scale.pageAlignHorizontally = true;
@@ -141,7 +141,7 @@ body {
 			
 			   //  Blue enemy's bullets
    			blueEnemyBullets = game.add.group();
-			blueEnemyBullets.enableBody = true;
+				blueEnemyBullets.enableBody = true;
   			blueEnemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
     			blueEnemyBullets.createMultiple(30, 'blueEnemyBullet');
     			blueEnemyBullets.callAll('crop', null, {x: 90, y: 0, width: 90, height: 70});
@@ -168,12 +168,10 @@ body {
 			blueEnemies.forEach(function(enemy){
 				enemy.damageAmount = 40;
 			});
-			   game.time.events.add(1000, launchBlueEnemy);
-			
-			
+			 
+				//game.time.events.add(1000, launchBlueEnemy);
 			
 
-			
 			//  And some controls to play the game with
 			cursors = game.input.keyboard.createCursorKeys();
 			fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -213,11 +211,12 @@ body {
 		//}
 		
 		 //  Score
-    scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
-    scoreText.render = function () {
-        scoreText.text = 'Score: ' + score;
-    };
-    scoreText.render();
+    
+			scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
+			scoreText.render = function () {
+			scoreText.text = 'Score: ' + score;
+			};
+			scoreText.render();
 		
 		
 		//  Game over text
@@ -339,7 +338,20 @@ body {
 			
 		  // Increase score
 			score += enemy.damageAmount * 10;
-			scoreText.render();
+			//scoreText.render();
+			  scoreText.render();
+
+    //  Pacing
+    //  Enemies come quicker as score increases
+    greenEnemySpacing *= 0.9;
+    //  Blue enemies come in after a score of 1000
+    if (!blueEnemyLaunched && score > 1000) {
+      blueEnemyLaunched = true;
+      launchBlueEnemy();
+      //  Slow green enemies down now that there are other enemies
+      greenEnemySpacing *= 2;
+    }		
+								
 		}
 		
 		
@@ -363,7 +375,9 @@ body {
 			greenEnemies.callAll('kill');
 			game.time.events.remove(greenEnemyLaunchTimer);
 			game.time.events.add(1000, launchGreenEnemy); 
+			blueEnemies.callAll('kill');
 			blueEnemyBullets.callAll('kill');
+			game.time.events.remove(blueEnemyLaunchTimer);
 			
 			blueEnemies.callAll('kill');
 			game.time.events.remove(blueEnemyLaunchTimer);
@@ -379,15 +393,18 @@ body {
 			//  Hide the text
 			gameOver.visible = false;
 			
+		  //  Reset pacing
+			greenEnemySpacing = 1000;
+			blueEnemyLaunched = false;
+			
 		}
 		
 
 		function render() {
 				
 		// for (var i = 0; i < greenEnemies.length; i++)
-   
 		// {
-		//     game.debug.body(greenEnemies.children[i]);
+		// game.debug.body(greenEnemies.children[i]);
 		// }
 		// game.debug.body(player);
 
@@ -420,8 +437,8 @@ body {
 		
 		
 		function launchGreenEnemy() {
-			var MIN_ENEMY_SPACING = 300;
-			var MAX_ENEMY_SPACING = 300;
+			//var MIN_ENEMY_SPACING = 300;
+			//var MAX_ENEMY_SPACING = 300;
 			var ENEMY_SPEED = 300;
 			var enemy = greenEnemies.getFirstExists(false);
 			
@@ -454,7 +471,8 @@ body {
 			
 			//  Send another enemy soon
 			//game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
-			greenEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
+			//greenEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
+			greenEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(greenEnemySpacing, greenEnemySpacing + 1000), launchGreenEnemy);
 		}	
 
 			
@@ -469,7 +487,9 @@ body {
 			var frequency = 70;
 			var verticalSpacing = 70;
 			var numEnemiesInWave = 5;
-			var timeBetweenWaves = 7000;
+			//var timeBetweenWaves = 7000;
+			var timeBetweenWaves = 2500;	
+				
 		
 			//  Launch wave
 			for (var i =0; i < numEnemiesInWave; i++) {
@@ -524,7 +544,9 @@ body {
 				
 		}		
 			//  Send another wave soon
-			blueEnemyLaunchTimer = game.time.events.add(timeBetweenWaves, launchBlueEnemy)
+			//blueEnemyLaunchTimer = game.time.events.add(timeBetweenWaves, launchBlueEnemy);
+			blueEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(timeBetweenWaves, timeBetweenWaves + 4000), launchBlueEnemy);
+ }	
 		}
 		
 			
