@@ -420,7 +420,7 @@ function launchBlueEnemy() {
     for (var i =0; i < numEnemiesInWave; i++) {
         var enemy = blueEnemies.getFirstExists(false);
         if (enemy) {
-            enemy.startingY = startingY;
+            enemy.startingX = startingX;
             enemy.reset(game.width+horizonalSpacing * i, game.height / 2);
             enemy.body.velocity.X = horizonalSpeed;
 
