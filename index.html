@@ -417,15 +417,14 @@ body {
 				}
 			}
 			 
-		}	
+			
 			//  Send another enemy soon
 			//game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 			greenEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
-			
+		}	
 
 			
-			//  Send another wave soon
-			blueEnemyLaunchTimer = game.time.events.add(timeBetweenWaves, launchBlueEnemy);
+			
 		
 			
 		
@@ -462,11 +461,16 @@ body {
 					//  Kill enemies once they go off screen
 					if (this.y > game.height + 200) {
 						this.kill();
-					}
+					};
 				};
 			}
 		}
-			
+		
+		
+			//  Send another wave soon
+			blueEnemyLaunchTimer = game.time.events.add(timeBetweenWaves, launchBlueEnemy)
+		}
+		
 
 		function addEnemyEmitterTrail(enemy) {
 			var enemyTrail = game.add.emitter(enemy.x, player.y - 10, 100);
