@@ -344,6 +344,7 @@ body {
     //  Pacing
     //  Enemies come quicker as score increases
     greenEnemySpacing *= 0.9;
+					
     //  Blue enemies come in after a score of 1000
     if (!blueEnemyLaunched && score > 1000) {
       blueEnemyLaunched = true;
@@ -353,8 +354,6 @@ body {
     }		
 								
 		}
-		
-		
 		
 
 		function enemyHitsPlayer (player, bullet) {
