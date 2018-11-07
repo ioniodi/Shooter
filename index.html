@@ -123,8 +123,6 @@ body {
 			greenEnemies.setAll('angle', 180);
 			//greenEnemies.setAll('outOfBoundsKill', true);
 			//greenEnemies.setAll('checkWorldBounds', true);
-			
-		
 			greenEnemies.forEach(function(enemy){
 				addEnemyEmitterTrail(enemy);
 				//enemy.body.setSize(enemy.width * 3 / 4, enemy.height * 3 / 4);
@@ -306,13 +304,11 @@ body {
 					function _restart() {
 						tapRestart.detach();
 						spaceRestart.detach();
-						restart();}
+						restart();
+					}
 				}
 			}	
-
-		
-				
-				}
+		}
 		
 				function shipCollide(player, enemy) {
 			var explosion = explosions.getFirstExists(false);
@@ -444,10 +440,15 @@ body {
 			
 			if (enemy) {
 
-				enemy.reset(game.rnd.integerInRange(0, game.width), -20);
+				/*enemy.reset(game.rnd.integerInRange(0, game.width), -20);
 				enemy.body.velocity.y = ENEMY_SPEED;
 				enemy.body.velocity.x = game.rnd.integerInRange(-300, 300);
-				enemy.body.drag.x = 100;
+				enemy.body.drag.x = 100;*/
+				
+			 	enemy.reset(game.width+50, game.rnd.integerInRange(0, game.height-50));
+				enemy.body.velocity.x = -ENEMY_SPEED;
+        enemy.body.velocity.y = game.rnd.integerInRange(-60, 60);
+        enemy.body.drag.x = -10;
 				
 				enemy.trail.start(false, 800, 1);
 				
@@ -455,7 +456,7 @@ body {
 			     //  Update function for each enemy ship to update rotation etc
 
 				enemy.update = function(){
-				enemy.angle = 180 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
+				enemy.angle = -90 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
 				
 		       enemy.trail.x = enemy.x;
 					enemy.trail.y = enemy.y -10;
