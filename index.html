@@ -59,7 +59,7 @@ body {
 			game.load.image('ship', 'assets/sp2.png');
 			game.load.image('bullet', 'assets/bullets/bullet.png');
 			game.load.image('enemy-green', 'assets/enemies/green-enemy.png');
-			game.load.image('enemy-blue', 'assets/blue-enemy.png');
+			game.load.image('enemy-blue', 'assets/enemies/blue-enemy.png');
 			game.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
 			game.load.bitmapFont('spacefont', 'assets/spacefont/spacefont.png', 'assets/spacefont/spacefont.xml');
 			game.load.audio('Destroy', 'Destroy.mp3');
@@ -422,8 +422,6 @@ body {
 			//game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 			greenEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 			
-		
-		
 
 			
 			//  Send another wave soon
