@@ -23,7 +23,7 @@ body {
 		});
 		
 		
-		
+		var gmusic;
 		var player;
 		  var greenEnemies;
 		  var blueEnemies;
@@ -71,10 +71,18 @@ body {
 			 
 			
 			game.load.audio('fire','sounds/fire.mp3');
+			game.load.audio('gmusic','sounds/gmusic.mp3');
 
 		}
 
 		function create() {
+			
+			//Music 
+			gmusic = game.add.audio('gmusic');
+			gmusic.loopFull();
+			gmusic.play();
+			gmusic.volume = 0.6;
+			
 			
 			game.scale.pageAlignHorizontally = true;
 			
