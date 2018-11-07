@@ -417,11 +417,11 @@ body {
 				}
 			}
 			 
-			
+		}	
 			//  Send another enemy soon
 			//game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 			greenEnemyLaunchTimer = game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
-		}	
+			
 		
 		
 
@@ -429,7 +429,7 @@ body {
 			//  Send another wave soon
 			blueEnemyLaunchTimer = game.time.events.add(timeBetweenWaves, launchBlueEnemy);
 		
-			}
+			
 		
 			function launchBlueEnemy() {
 			var startingX = game.rnd.integerInRange(100, game.width - 100);
@@ -439,7 +439,9 @@ body {
 			var verticalSpacing = 70;
 			var numEnemiesInWave = 5;
 			var timeBetweenWaves = 7000;
-
+			}
+		
+		
 			//  Launch wave
 			for (var i =0; i < numEnemiesInWave; i++) {
 				var enemy = blueEnemies.getFirstExists(false);
