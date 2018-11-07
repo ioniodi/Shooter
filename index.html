@@ -458,8 +458,8 @@ function launchGreenEnemy() {
 	
 		
 function launchBlueEnemy() {
-    var startingX = game.rnd.integerInRange(100, game.width - 100);
-    var verticalSpeed = -90;
+    var startingY = game.rnd.integerInRange(100, game.width - 100);
+    var verticalSpeed = -180;
     var spread = 60;
     var frequency = 70;
     var verticalSpacing = 70;
@@ -470,9 +470,9 @@ function launchBlueEnemy() {
     for (var i =0; i < numEnemiesInWave; i++) {
         var enemy = blueEnemies.getFirstExists(false);
         if (enemy) {
-            enemy.startingX = startingX;
-            enemy.reset(game.width / 2, -verticalSpacing * i);
-            enemy.body.velocity.y = verticalSpeed;
+            enemy.startingY = startingY;
+            enemy.reset(800 + (HorizontalSpacing * i), game.height / 2);
+	    enemy.body.velocity.x = HorizontalSpeed;
 		
 		//  Set up firing
             var bulletSpeed = 400;
@@ -483,11 +483,11 @@ function launchBlueEnemy() {
             //  Update function for each enemy
             enemy.update = function(){
               //  Wave movement
-              this.body.x = this.startingX + Math.sin((this.y) / frequency) * spread;
+              this.body.y = this.startingY + Math.sin((this.x) / frequency) * spread;
 
               //  Squish and rotate ship for illusion of "banking"
-              bank = Math.cos((this.y + 60) / frequency)
-              this.scale.x = 0.5 - Math.abs(bank) / 8;
+              bank = Math.cos((this.x + 60) / frequency)
+              this.scale.y = 0.5 - Math.abs(bank) / 8;
               this.angle = 180 - bank * 2;
 		    
 	 //  Fire
@@ -507,7 +507,7 @@ function launchBlueEnemy() {
 
 
               //  Kill enemies once they go off screen
-              if (this.y > game.height + 200) {
+              if (this.x > game.height + 200) {
                 this.kill();
               }
             };
