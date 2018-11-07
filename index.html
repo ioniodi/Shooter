@@ -82,7 +82,7 @@ body {
 			gmusic = game.add.audio('gmusic');
 			gmusic.loopFull();
 			gmusic.play();
-			gmusic.volume = 0.6;
+			
 			
 			
 			game.scale.pageAlignHorizontally = true;
@@ -269,6 +269,7 @@ body {
 			if (player.alive && (fireButton.isDown || game.input.activePointer.isDown)) {
 				fire = game.add.audio('fire');
 		        		fire.play();
+				        fire.volume = 0.4;
 				fireBullet();
 			}
 
