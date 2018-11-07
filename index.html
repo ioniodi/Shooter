@@ -30,7 +30,9 @@ body {
 		var bank;
 		var shipTrail;
 		var explosions;
+		
 		var bullets;
+		
 		var Destroy;
 		var fireButton;
 		var bulletTimer = 0;
@@ -57,6 +59,7 @@ body {
 			game.load.image('ship', 'assets/sp2.png');
 			game.load.image('bullet', 'assets/bullets/bullet.png');
 			game.load.image('enemy-green', 'assets/enemies/green-enemy.png');
+			
 			game.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
 			game.load.bitmapFont('spacefont', 'assets/spacefont/spacefont.png', 'assets/spacefont/spacefont.xml');
 			game.load.audio('Destroy', 'Destroy.mp3');
@@ -122,7 +125,7 @@ body {
 		
 			greenEnemies.forEach(function(enemy){
 				addEnemyEmitterTrail(enemy);
-				enemy.body.setSize(enemy.width * 3 / 4, enemy.height * 3 / 4);
+				//enemy.body.setSize(enemy.width * 3 / 4, enemy.height * 3 / 4);
 				enemy.damageAmount = 20;
 				enemy.events.onKilled.add(function(){
 					enemy.trail.kill();
@@ -171,7 +174,7 @@ body {
 				shields.text = 'Shields: ' + Math.max(player.health, 0) +'%';
 				};
 			shields.render();
-		}
+		//}
 		
 		 //  Score
     scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
@@ -188,6 +191,12 @@ body {
 		gameOver.x = gameOver.x - gameOver.textWidth / 2;
 		gameOver.y = gameOver.y - gameOver.textHeight / 3;
 		gameOver.visible = false;
+		
+	
+		
+		
+	}
+		
 		
 		
 		function update() {
