@@ -23,6 +23,7 @@ body {
 		});
 
 		var song;
+		var Ex;
 		var player;
 		var greenEnemies;
 		var blueEnemies;
@@ -68,7 +69,7 @@ body {
 			game.load.bitmapFont('spacefont', 'assets/spacefont/spacefont.png', 'assets/spacefont/spacefont.xml');
 			game.load.audio('Destroy', 'Destroy.mp3');
 			game.load.audio('song', 'song.mp3');
-			
+			game.load.audio('Ex', 'Ex.mp3');
 			
 
 		}
@@ -317,10 +318,11 @@ body {
 			explosion.alpha = 0.7;
 			explosion.play('explosion', 30, false, true);
 			enemy.kill();
-			
-			
+			var audio = new Audio('Ex.mp3');
+	                audio.play()
+			audio.volume = 0.6		
 			player.damage(enemy.damageAmount);
-		shields.render();
+			shields.render();
 		}
 		
 				function hitEnemy(enemy, bullet) {
@@ -331,6 +333,9 @@ body {
 		explosion.play('explosion', 30, false, true);
 		enemy.kill();
 		bullet.kill();
+			var audio = new Audio('Ex.mp3');
+	                                audio.play()
+					audio.volume = 0.6		
 			
 		  // Increase score
 			score += enemy.damageAmount * 10;
@@ -425,6 +430,8 @@ body {
 					bullet.body.velocity.y += player.body.velocity.y;
 
 					bulletTimer = game.time.now + BULLET_SPACING;
+					
+					
 				}
 			}
 		}
