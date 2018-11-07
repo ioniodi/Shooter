@@ -421,7 +421,7 @@ function launchBlueEnemy() {
         var enemy = blueEnemies.getFirstExists(false);
         if (enemy) {
             enemy.startingY = startingY;
-            enemy.reset(game.width+horizonalSpacing * i, game.height / 2);
+            enemy.reset(game.width / 2, -verticalSpacing * i);
             enemy.body.velocity.X = horizonalSpeed;
 
             //  Update function for each enemy
