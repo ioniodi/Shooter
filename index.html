@@ -244,6 +244,14 @@ body {
 			if (player.alive && (fireButton.isDown || game.input.activePointer.isDown)) {
 				fireBullet();
 			}
+			//  Move ship towards mouse pointer
+			if (game.input.y < game.width - 20 &&
+				game.input.y > 20 &&
+				game.input.x > 20 &&
+				game.input.x < game.height - 20) {
+				var minDist = 200;
+				var dist = game.input.y - player.y;
+				player.body.velocity.y = MAXSPEED * game.math.clamp(dist / minDist, -1, 1);
 
 			//  Keep the shipTrail lined up with the ship
 			shipTrail.y = player.y;
