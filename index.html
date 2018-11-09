@@ -24,8 +24,8 @@ body {
 			render : render
 		});
 
-		var audio = new Audio('assets/jam.mp3');
-		audio.play();
+		//var audio = new Audio('assets/jam.mp3');
+		//audio.play();
 		
 		var player;
 		var greenEnemies;
@@ -67,11 +67,13 @@ body {
 			game.load.image('blueEnemyBullet', '/assets/bullets/blue-enemy-bullet.png');
 			game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
 			game.load.bitmapFont('font', '/assets/spacefont/font.png', '/assets/spacefont/font.fnt');
+			game.load.audio('audio','assets/jam.mp3');
 
 		}
 		
 			function create() {
 					
+			Mousikh = game.add.audio('audio');
 			game.scale.pageAlignHorizontally = true;
 			
 			//  The scrolling starfield background
