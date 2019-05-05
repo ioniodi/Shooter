@@ -680,3 +680,4 @@ function enemyHitsPlayer (player, bullet) {
 	</script>
 </body>
 </html>
+
